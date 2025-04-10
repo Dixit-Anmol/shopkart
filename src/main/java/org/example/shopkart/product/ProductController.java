@@ -9,7 +9,7 @@ import java.util.List;
 //JSON JavaScript Object Notation
 @RestController
 public class ProductController {
-    private ProductService productService;
+    private final ProductService productService;
 
     @Autowired
     public ProductController(ProductService productService) {
@@ -19,25 +19,34 @@ public class ProductController {
 
     //CREATE - POST
     @PostMapping("/products/add")
-    public Product addProduct(@RequestBody Product product){
+    public Product addProduct(@RequestBody Product product) {
         productService.addProduct(product);
         return product;
     }
 
     //READ - GET
     @GetMapping("/products")
-    public List<Product> getProductList(){
+    public List<Product> getProductList() {
         return productService.getProductList();
     }
+
     //READ get
     @GetMapping("/products/{id}")
-    public Product getProduct(@PathVariable long id){
+    public Product getProduct(@PathVariable long id) {
         return productService.getProduct(id);
     }
 
     //UPDATE - PUT
+    @PutMapping("/products")
+    public Product updatePrice(@RequestBody Product product) {
+        return productService.updatePrice(product);
+    }
 
     //DELETE - DELETE
+    @DeleteMapping("/products")
+    public void deleteProduct(@RequestBody Product product) {
+        productService.deleteProduct(product);
+    }
 
     //REQUEST - HTTP METHOD & URL
     //HTTP - STATUS & RESPONSE BODY

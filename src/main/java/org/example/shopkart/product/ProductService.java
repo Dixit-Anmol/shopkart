@@ -45,6 +45,14 @@ public class ProductService {
                  );
          return product;
      }
-    }
+
     //DELETE
+    public boolean deleteProduct(Product product) {
+        productList.remove(product);
+        return true;
+    }
+
 }
+
+
+// ctrl + alt + shift +L -- to find mistakes
