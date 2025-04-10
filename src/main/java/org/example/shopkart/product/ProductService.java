@@ -21,6 +21,30 @@ public class ProductService {
         return product;
     }
     //READ
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public Product getProduct(long id){
+        return productList.stream()
+                .filter(product -> product.getId() == id)
+                .findFirst()
+                .orElse(null);
+
+    }
     //UPDATE
+     public Product updatePrice(Product product) {
+         productList.stream()
+                 .filter(p -> p.getId() == product.getId()
+                 )
+                 .findFirst()
+                 .ifPresent(p -> p.setPrice(
+                                 product.getPrice()
+                         )
+                 );
+         return product;
+     }
+    }
     //DELETE
 }
