@@ -1,4 +1,4 @@
-package org.example.shopkart;
+package org.example.shopkart.product;
 
 import java.util.Objects;
 
